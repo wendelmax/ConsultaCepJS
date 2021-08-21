@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cep Webservices</title>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+   
+</head>
+<body>
+    <h1>CEP JSON</h1>
+    
+    <input type="text" id="cep">
+    <input type="button" value="ok" id="ok">
+
+    <div id="leitura"></div>
+    
+    <script type="text/javascript">
+    $('#ok').click(function(){
+        var cep = $('#cep').val();
+        
+        $.getJSON('https://viacep.com.br/ws/'+cep+'/json',function(data){
+            $.each(data, function(key, value){
+                $('#leitura').append('<h4 name="'+key+'">' + value + '</h4>');
+            }) //fecha o each
+        }) // fechando o getjson
+    
+    })
+    </script>
+
+</body>
+</html>
